@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<center><h1>Edit Donor Detail</h1></center>
+{% endblock title %}
+
+
+{% block content %}
+	<form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="Update">
+        <a href="{% url 'list_all' %}" class="btn btn-primary">Go Back</a>
+    </form>
+{% endblock content %}

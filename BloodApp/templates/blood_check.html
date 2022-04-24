@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	<center><h1>Check Blood Availability</h1></center>
+{% endblock title %}
+
+
+{% block content %}
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Blood Group</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for b in blood %}
+    <tr>
+      <td>{{b.donor_blood_group}}</td>
+      <td>{{b.count}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="col-auto"><a href="{% url 'index' %}" class="btn btn-primary">Return to Home Page</a></div>
+
+{% endblock content %}

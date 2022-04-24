@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <div style="color:#800000;margin:50px;">
+	<center><h1>Blood Management App</h1></center>
+  </div>
+{% endblock title %}
+
+
+{% block content %}
+
+	<div class="row row-cols-1 row-cols-md-2 g-4">
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body" style="background-color: #FFC0CB;">
+        <h2 class="card-title">Donor</h2>
+        <p class="card-text">Give Blood to the Needy ones.</p>
+        <a href="{% url 'add_donor' %}" class="btn btn-primary"><h4>Add Donor</h4></a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body" style="background-color: #FFC0CB;">
+        <h2 class="card-title">Search by donor name, blood group</h2>
+        <p class="card-text">All the donors and receiver</p>
+        <a href="{% url 'list_all' %}" class="btn btn-primary"><h4>Search</h4></a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body" style="background-color: #FFC0CB;">
+        <h2 class="card-title">Total Donors</h2>
+        <p class="card-text"><h4>{{total}}</h4></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body" style="background-color: #FFC0CB;">
+        <h2 class="card-title">Check Blood Availability</h2>
+        <a href="{% url 'blood_check' %}" class="btn btn-primary"><h4>Check</h4></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+	
+{% endblock content %}

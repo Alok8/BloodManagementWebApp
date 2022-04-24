@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<center><h1>Search by Name, Blood Group</h1></center>
+{% endblock title %}
+
+{% block content %}
+
+
+<form method="get" action="{% url 'search_result' %}" class="form-inline my-sm-0">
+  <div class="row g-3 align-items-center">
+  <div class="col-auto">
+	<input type="search" id="query" name="query" class="form-control" /></div>
+    <!--<label class="form-label"></label>-->
+    <div class="col-auto">
+  <button type="submit" class="btn btn-primary">
+    <i class="fas fa-search">Search</i>
+  </button></div>
+
+  <div class="col-auto"><a href="{% url 'index' %}" class="btn btn-primary">Return to Home Page</a></div>
+
+  <div class="col-auto"><a href="{% url 'list_all' %}" class="btn btn-primary">Display All</a></div>
+
+</div>
+</form>
+
+<div class="container">
+  {% if donors|length < 1 %}
+  <h1>No search result found</h1>
+  {% else %}
+  <h1>Donors</h1>
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Blood Group</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for d in donors %}
+    <tr>
+      <td>{{d.pk}}</td>
+      <td>{{d.donor_name}}</td>
+      <td>{{d.donor_age}}</td>
+      <td>{{d.donor_blood_group}}</td>
+      <td>{{d.donor_contact}}</td>
+      <td><a href="{% url 'edit_donor' d.pk %}" class="btn btn-primary">Edit</a>
+        <form action="{% url 'delete_donor' d.pk %}" method="POST" class="d-inline">
+          {% csrf_token %}
+          <input type="submit" class="btn btn-danger" value="Delete">
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+</div>
+
+{% endblock content %}

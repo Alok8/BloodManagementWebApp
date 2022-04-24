@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<center><h1>Add a Donor</h1></center>
+{% endblock title %}
+
+
+{% block content %}
+	<form action="{% url 'add_donor' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success">
+        <a href="{% url 'index' %}" class="btn btn-primary">Return to Home Page</a>
+    </form>
+{% endblock content %}
+
